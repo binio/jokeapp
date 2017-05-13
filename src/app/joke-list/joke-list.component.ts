@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Joke } from '../joke/joke';
 
 @Component({
   selector: 'joke-list',
@@ -7,20 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JokeListComponent implements OnInit {
 
-  jokes: Object[];
+  jokes: Joke[];
   constructor() { 
-    this.jokes= [{
-      setup:'What did the cheese say when it looked in the mirror?',
-      punchline:'Halloumi (Hello Me)'
-    },
-    {
-      setup:'What kind of cheese you use to disguise small horse?',
-      punchline:'Mask-a-pony Mascarpone'
-    },
-    {
-      setup:'Kid threw a lump of cheddar at me',
-      punchline:'That was not very mature'
-    }
+    this.jokes= [
+      new Joke('What did the cheese say when it looked in the mirror?','Halloumi (Hello Me)'),
+      new Joke('What kind of cheese you use to disguise small horse?','Mask-a-pony Mascarpone'),
+      new Joke('Kid threw a lump of cheddar at me','That was not very mature')
     ];
   }
 
