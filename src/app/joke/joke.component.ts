@@ -1,26 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Joke } from './joke';
 
 @Component({
-  selector: 'app-joke',
-  template: `<h1>{{setup}}</h1>
-    <p>{{punchline}}</p>`,
+  selector: 'joke',
+  template: `
+  <div class="card card-block">
+  <h4 class="card-title">{{joke.setup}}</h4>
+  <p class="card-punchline" [hidden]="joke.hide">{{joke.punchline}}</p>
+  <a class="btn btn-primary" (click)="joke.toggle()">Tell me!</a>
+</div>
+  `,
   styleUrls: ['./joke.component.css']
 })
-export class JokeComponent implements OnInit {
+export class JokeComponent  {
 
-  setup:string;
-  punchline:string;
-
-  constructor() { 
-    this.setup ='What did the cheese say when it looked in the mirror?';
-    this.punchline = 'Halloumi (Hello Me)';
-
-    console.log(this.setup);
-    console.log(this.punchline);
-
-  }
-
-  ngOnInit() {
-  }
+  @Input() joke: Joke;
 
 }
